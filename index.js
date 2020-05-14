@@ -2,8 +2,11 @@
 
 // 🏡 Task 1: Variables
 /* Create variables for principal, interest rate, and years. Assign them the values 200000, 0.05, and 30 respectively. Create another value called name and give it the value of your own name.
-*/
-
+ */
+let principal = '200000';
+let interestRate = 0.05;
+let year = 30;
+let name = 'gregory';
 
 
 
@@ -15,7 +18,8 @@ Create a variable called `monthlyInterestRate` and give it the value of interest
 
 Create another variable called `periods` and give it the value of years*12.
 */
-
+let monthlyInterestRate = interestRate / 12;
+let periods = year * 12;
 
 
 
@@ -28,7 +32,11 @@ Hint #2: you'll need to use the `math` object for parts of this calculation!
 
 When your math is correct, monthlyRate will equal 1073.64
 */
-
+var numerator = monthlyInterestRate * Math.pow((1 + monthlyInterestRate), periods)
+var denominator = Math.pow((1 + monthlyInterestRate), periods) - 1;
+var monthlyRate = numerator / denominator * principal;
+console.log('monthlyRate:', monthlyRate);
+console.log(name);
 
 
 
@@ -37,7 +45,11 @@ When your math is correct, monthlyRate will equal 1073.64
 
 If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly rate is 1073.64"
 */
+function mortgageCalculator() {
+    return `${name}, your monthly rate is ${monthlyRate}`;
+}
 
+console.log(mortgageCalculator());
 
 
 
@@ -48,7 +60,11 @@ If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly 
 For example,
 mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
 */
+function mortgageCalculator1(P, I, N) {
+    return (Math.round(P * (((I / 12) * Math.pow((1 + (I / 12)), (N * 12))) / (Math.pow((1 + (I / 12)), (N * 12)) - 1)) * 100) / 100)
+}
 
+console.log(mortgageCalculator1(200000, 0.05, 30));
 
 
 
